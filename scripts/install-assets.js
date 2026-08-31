@@ -6,12 +6,14 @@ const {
   lstatSync,
   mkdirSync,
   readFileSync,
+  readlinkSync,
   readdirSync,
   renameSync,
+  symlinkSync,
   rmSync,
   writeFileSync,
 } = require("node:fs");
-const { basename, dirname, join } = require("node:path");
+const { basename, dirname, join, resolve } = require("node:path");
 
 process.on("uncaughtException", (error) => {
   console.error(`error: ${error.message}`);
@@ -155,6 +157,40 @@ function checkBlock(target) {
   }
 }
 
+function linkMatches(target, source) {
+  if (!pathExists(target) || !lstatSync(target).isSymbolicLink()) return false;
+  const linked = resolve(dirname(target), readlinkSync(target));
+  const expected = resolve(source);
+  return process.platform === "win32"
+    ? linked.toLowerCase() === expected.toLowerCase()
+    : linked === expected;
+}
+
+function checkLink(target, source, force) {
+  if (pathExists(target) && !linkMatches(target, source) && !force) {
+    fail(`Unmanaged instruction file conflict:\n${target}`);
+  }
+}
+
+function installLink(target, source, force) {
+  checkLink(target, source, force);
+  if (linkMatches(target, source)) return;
+  mkdirSync(dirname(target), { recursive: true });
+  rmSync(target, { recursive: true, force: true });
+  try {
+    symlinkSync(resolve(source), target, "file");
+  } catch (error) {
+    if (process.platform === "win32" && error.code === "EPERM") {
+      fail("Creating instruction symlinks on Windows requires Developer Mode or an elevated shell");
+    }
+    throw error;
+  }
+}
+
+function removeLink(target, source) {
+  if (linkMatches(target, source)) rmSync(target, { force: true });
+}
+
 function installBlock(target, contentPath) {
   const begin = "<!-- BEGIN AGENTARIUM MANAGED INSTRUCTIONS -->";
   const end = "<!-- END AGENTARIUM MANAGED INSTRUCTIONS -->";
@@ -227,7 +263,10 @@ else if (command === "block" && args.length === 2) installBlock(...args);
 else if (command === "check-plugins" && args.length === 4) checkFiles(...args.slice(0, 3), force);
 else if (command === "check-skills" && args.length === 4) checkDirectories(...args.slice(0, 3), force);
 else if (command === "check-block" && args.length === 1) checkBlock(...args);
+else if (command === "check-link" && args.length === 3) checkLink(...args.slice(0, 2), force);
+else if (command === "link" && args.length === 3) installLink(...args.slice(0, 2), force);
 else if (command === "remove-plugins" && args.length === 2) removeFiles(...args);
 else if (command === "remove-skills" && args.length === 2) removeDirectories(...args);
 else if (command === "remove-block" && args.length === 1) removeBlock(...args);
+else if (command === "remove-link" && args.length === 2) removeLink(...args);
 else fail("Usage: install-assets.js plugins|skills|block <arguments>");

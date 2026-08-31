@@ -30,9 +30,9 @@ Node.js is required only for integrations. Claude marketplace registration addit
 
 Unmanaged files that conflict with Agentarium are listed before installation. Interactive mode asks before overwriting them; non-interactive mode stops unless `--force` or `-Force` is supplied.
 
-OpenCode instructions are installed as a managed block in `~/.config/opencode/AGENTS.md`. OpenCode discovers shared Skills directly from `~/.agents/skills`.
+OpenCode instructions use a symbolic link from `~/.config/opencode/AGENTS.md` to `~/.agents/AGENTS.md`. OpenCode discovers shared Skills directly from `~/.agents/skills`.
 
-Codex instructions are installed as a managed block in `$CODEX_HOME/AGENTS.md` (default `~/.codex/AGENTS.md`). Codex also discovers shared Skills directly from `~/.agents/skills`; its hooks are managed separately through `$CODEX_HOME/hooks.json`.
+Codex instructions use a symbolic link from `$CODEX_HOME/AGENTS.md` (default `~/.codex/AGENTS.md`) to `~/.agents/AGENTS.md`. Codex also discovers shared Skills directly from `~/.agents/skills`; its hooks are managed separately through `$CODEX_HOME/hooks.json`.
 
 ## Operations
 
@@ -51,5 +51,7 @@ Re-run the installer to update managed content.
 Doctor verifies the shared core. Uninstall removes only manifest-, marker-, or directory-owned Agentarium content.
 
 Set `AGENTARIUM_HOME` or use PowerShell's `-InstallDirectory` to change the core location. Windows and WSL use separate installations.
+
+Windows requires Developer Mode or an elevated shell to create the OpenCode and Codex instruction symlinks.
 
 See [Architecture](docs/architecture.md), [Security](SECURITY.md), and [Third-Party Notices](THIRD_PARTY_NOTICES.md).

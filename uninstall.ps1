@@ -27,8 +27,9 @@ if ($HasIntegrations -and -not (Get-Command node -ErrorAction SilentlyContinue))
 }
 
 if (Get-Command node -ErrorAction SilentlyContinue) {
-    Invoke-NativeChecked { & node $AssetInstaller remove-block `
-        (Join-Path $OpenCodeDirectory "AGENTS.md") }
+    Invoke-NativeChecked { & node $AssetInstaller remove-link `
+        (Join-Path $OpenCodeDirectory "AGENTS.md") `
+        (Join-Path $InstallDirectory "AGENTS.md") }
     Invoke-NativeChecked { & node $AssetInstaller remove-plugins `
         (Join-Path $OpenCodeDirectory "plugins") `
         (Join-Path $OpenCodeDirectory ".agentarium-managed-plugins") }
@@ -47,8 +48,9 @@ if (Get-Command node -ErrorAction SilentlyContinue) {
         (Join-Path $ClaudeDirectory "skills/.agentarium-managed-skills") }
     Remove-Item (Join-Path $ClaudeDirectory "agentarium") -Recurse -Force -ErrorAction SilentlyContinue
 
-    Invoke-NativeChecked { & node $AssetInstaller remove-block `
-        (Join-Path $CodexDirectory "AGENTS.md") }
+    Invoke-NativeChecked { & node $AssetInstaller remove-link `
+        (Join-Path $CodexDirectory "AGENTS.md") `
+        (Join-Path $InstallDirectory "AGENTS.md") }
     Invoke-NativeChecked { & node `
         (Join-Path $SourceDirectory "integrations/codex/install-hooks.js") `
         $CodexDirectory (Join-Path $SourceDirectory "integrations/codex/hooks/hooks.json") --remove }

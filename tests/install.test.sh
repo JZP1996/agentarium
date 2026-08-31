@@ -21,15 +21,14 @@ home="$TEST_ROOT/full"
 mkdir -p "$home/.claude" "$home/.codex"
 printf '%s\n' 'user claude instructions' > "$home/.claude/CLAUDE.md"
 printf '%s\n' 'user codex instructions' > "$home/.codex/AGENTS.md"
-HOME="$home" CODEX_HOME="$home/.codex" "$ROOT/install.sh" --integrations 1,2,3 >/dev/null
+HOME="$home" CODEX_HOME="$home/.codex" "$ROOT/install.sh" --integrations 1,2,3 --force >/dev/null
 HOME="$home" CODEX_HOME="$home/.codex" "$ROOT/install.sh" --integrations 1,2,3 >/dev/null
 
 grep -q '^user claude instructions$' "$home/.claude/CLAUDE.md"
-grep -q '^user codex instructions$' "$home/.codex/AGENTS.md"
-test "$(grep -c 'BEGIN AGENTARIUM' "$home/.codex/AGENTS.md")" -eq 1
 test -f "$home/.claude/rules/agentarium.md"
 test -f "$home/.claude/skills/code-review/SKILL.md"
-test "$(grep -c 'BEGIN AGENTARIUM' "$home/.config/opencode/AGENTS.md")" -eq 1
+test -L "$home/.config/opencode/AGENTS.md"
+test -L "$home/.codex/AGENTS.md"
 test -f "$home/.config/opencode/plugins/retry-loop-detector.js"
 test ! -e "$home/.config/opencode/plugins/circuit-breaker.js"
 touch "$home/.agents/user-owned"
@@ -37,11 +36,11 @@ touch "$home/.agents/user-owned"
 HOME="$home" AGENTARIUM_HOME="$home/.agents" "$ROOT/doctor.sh" >/dev/null
 HOME="$home" CODEX_HOME="$home/.codex" "$ROOT/uninstall.sh" >/dev/null
 grep -q '^user claude instructions$' "$home/.claude/CLAUDE.md"
-grep -q '^user codex instructions$' "$home/.codex/AGENTS.md"
 test -f "$home/.agents/user-owned"
 test ! -e "$home/.claude/agentarium"
 test ! -e "$home/.claude/skills/code-review"
 test ! -e "$home/.config/opencode/AGENTS.md"
+test ! -e "$home/.codex/AGENTS.md"
 test ! -e "$home/.config/opencode/plugins/retry-loop-detector.js"
 
 unsafe_home="$TEST_ROOT/unsafe"

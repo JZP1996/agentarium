@@ -19,7 +19,7 @@ if [[ -f "$opencode_dir/.agentarium-managed-plugins" ||
 fi
 
 if command -v node >/dev/null 2>&1; then
-node "$ASSET_INSTALLER" remove-block "$opencode_dir/AGENTS.md"
+node "$ASSET_INSTALLER" remove-link "$opencode_dir/AGENTS.md" "$INSTALL_DIR/AGENTS.md"
 node "$ASSET_INSTALLER" remove-plugins \
   "$opencode_dir/plugins" "$opencode_dir/.agentarium-managed-plugins"
 
@@ -32,7 +32,7 @@ node "$ASSET_INSTALLER" remove-skills \
   "$claude_dir/skills" "$claude_dir/skills/.agentarium-managed-skills"
 rm -rf "$claude_dir/agentarium"
 
-node "$ASSET_INSTALLER" remove-block "$codex_dir/AGENTS.md"
+node "$ASSET_INSTALLER" remove-link "$codex_dir/AGENTS.md" "$INSTALL_DIR/AGENTS.md"
 node "$SOURCE_DIR/integrations/codex/install-hooks.js" \
   "$codex_dir" "$SOURCE_DIR/integrations/codex/hooks/hooks.json" --remove
 rm -rf "$codex_dir/agentarium"

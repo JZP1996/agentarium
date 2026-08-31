@@ -75,7 +75,8 @@ preflight() {
     case "$choice" in
       1)
         config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/opencode"
-        node "$ASSET_INSTALLER" check-block "$config_dir/AGENTS.md" || failed=1
+        node "$ASSET_INSTALLER" check-link "$config_dir/AGENTS.md" \
+          "$INSTALL_DIR/AGENTS.md" "$force" || failed=1
         node "$ASSET_INSTALLER" check-plugins "$SOURCE_DIR/integrations/opencode/plugins" \
           "$config_dir/plugins" "$config_dir/.agentarium-managed-plugins" "$force" || failed=1
         ;;
@@ -85,7 +86,8 @@ preflight() {
           "$HOME/.claude/skills/.agentarium-managed-skills" "$force" || failed=1
         ;;
       3)
-        node "$ASSET_INSTALLER" check-block "${CODEX_HOME:-$HOME/.codex}/AGENTS.md" || failed=1
+        node "$ASSET_INSTALLER" check-link "${CODEX_HOME:-$HOME/.codex}/AGENTS.md" \
+          "$INSTALL_DIR/AGENTS.md" "$force" || failed=1
         codex_args=(--check)
         [[ "$force" == true ]] && codex_args+=(--force)
         node "$SOURCE_DIR/integrations/codex/install-hooks.js" \
@@ -145,7 +147,7 @@ install_opencode() {
   local plugin_dir="$config_dir/plugins"
   local manifest="$config_dir/.agentarium-managed-plugins"
 
-  node "$ASSET_INSTALLER" block "$config_dir/AGENTS.md" "$INSTALL_DIR/AGENTS.md"
+  node "$ASSET_INSTALLER" link "$config_dir/AGENTS.md" "$INSTALL_DIR/AGENTS.md" "$force"
   node "$ASSET_INSTALLER" plugins \
     "$SOURCE_DIR/integrations/opencode/plugins" "$plugin_dir" "$manifest" "$force"
   printf 'Installed Agentarium OpenCode integration: managed instructions, plugins, and %s\n' "$manifest"
@@ -178,7 +180,7 @@ install_codex() {
   local runtime_dir="$config_dir/agentarium"
 
   mkdir -p "$config_dir"
-  node "$ASSET_INSTALLER" block "$config_dir/AGENTS.md" "$INSTALL_DIR/AGENTS.md"
+  node "$ASSET_INSTALLER" link "$config_dir/AGENTS.md" "$INSTALL_DIR/AGENTS.md" "$force"
   sync_directory "$SOURCE_DIR/integrations/codex" "$runtime_dir"
   rm -rf "$runtime_dir/tests"
   codex_args=()

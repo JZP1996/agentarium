@@ -69,8 +69,9 @@ function Invoke-Preflight {
         switch ($Choice) {
         "1" {
             $ConfigDirectory = Join-Path $HOME ".config/opencode"
-            Invoke-PreflightCheck { & node $AssetInstaller check-block `
-                (Join-Path $ConfigDirectory "AGENTS.md") }
+            Invoke-PreflightCheck { & node $AssetInstaller check-link `
+                (Join-Path $ConfigDirectory "AGENTS.md") `
+                (Join-Path $InstallDirectory "AGENTS.md") $EffectiveForce }
             Invoke-PreflightCheck { & node $AssetInstaller check-plugins `
                 (Join-Path $SourceDirectory "integrations/opencode/plugins") `
                 (Join-Path $ConfigDirectory "plugins") `
@@ -86,7 +87,9 @@ function Invoke-Preflight {
         }
         "3" {
             $CodexHome = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME ".codex" }
-            Invoke-PreflightCheck { & node $AssetInstaller check-block (Join-Path $CodexHome "AGENTS.md") }
+            Invoke-PreflightCheck { & node $AssetInstaller check-link `
+                (Join-Path $CodexHome "AGENTS.md") `
+                (Join-Path $InstallDirectory "AGENTS.md") $EffectiveForce }
             $Arguments = @($CodexHome, (Join-Path $SourceDirectory "integrations/codex/hooks/hooks.json"), "--check")
             if ($EffectiveForce) { $Arguments += "--force" }
             Invoke-PreflightCheck { & node (Join-Path $SourceDirectory "integrations/codex/install-hooks.js") @Arguments }
@@ -159,9 +162,9 @@ function Install-OpenCode {
     $ConfigDirectory = Join-Path $HOME ".config/opencode"
     $PluginDirectory = Join-Path $ConfigDirectory "plugins"
     $Manifest = Join-Path $ConfigDirectory ".agentarium-managed-plugins"
-    Invoke-NativeChecked { & node $AssetInstaller block `
+    Invoke-NativeChecked { & node $AssetInstaller link `
         (Join-Path $ConfigDirectory "AGENTS.md") `
-        (Join-Path $InstallDirectory "AGENTS.md") }
+        (Join-Path $InstallDirectory "AGENTS.md") $EffectiveForce }
     Invoke-NativeChecked { & node $AssetInstaller plugins `
         (Join-Path $SourceDirectory "integrations/opencode/plugins") $PluginDirectory $Manifest `
         $EffectiveForce }
@@ -196,8 +199,8 @@ function Install-Codex {
     $ConfigDirectory = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME ".codex" }
     $RuntimeDirectory = Join-Path $ConfigDirectory "agentarium"
     New-Item -ItemType Directory -Path $ConfigDirectory -Force | Out-Null
-    Invoke-NativeChecked { & node $AssetInstaller block (Join-Path $ConfigDirectory "AGENTS.md") `
-        (Join-Path $InstallDirectory "AGENTS.md") }
+    Invoke-NativeChecked { & node $AssetInstaller link (Join-Path $ConfigDirectory "AGENTS.md") `
+        (Join-Path $InstallDirectory "AGENTS.md") $EffectiveForce }
     Sync-Directory (Join-Path $SourceDirectory "integrations/codex") $RuntimeDirectory
     Remove-Item -LiteralPath (Join-Path $RuntimeDirectory "tests") -Recurse -Force
     $Arguments = @($ConfigDirectory, (Join-Path $RuntimeDirectory "hooks/hooks.json"))

@@ -7,7 +7,7 @@
 - Install copies, not links. Keep Bash and PowerShell installer behavior equivalent.
 - Validate selections and manifests before writing. Ask before overwriting unmanaged conflicts; non-interactive installs require explicit force. Remove only content identified by Agentarium manifests, markers, or owned directories.
 - Do not modify Claude Code or OpenCode permission settings.
-- OpenCode and Codex use instruction marker blocks. Claude uses a namespaced rule and manifest-managed Skill copies.
+- OpenCode and Codex link their native global instruction files to the shared core. Claude uses a namespaced rule and manifest-managed Skill copies.
 - Keep Windows and WSL installations separate.
 
 ## Content
