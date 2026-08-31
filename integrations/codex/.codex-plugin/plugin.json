@@ -1,0 +1,6 @@
+{
+  "name": "agentarium-runtime",
+  "version": "0.1.0",
+  "description": "Personal Codex lifecycle guardrails and context helpers.",
+  "hooks": "./hooks/hooks.json"
+}

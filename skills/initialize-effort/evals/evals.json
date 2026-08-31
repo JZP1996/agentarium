@@ -1,0 +1,23 @@
+{
+  "skill_name": "initialize-effort",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create an effort named web-search-scores-migration using /workspace/Picasso and /workspace/SydneyEvaluation. Put it under /workspace/efforts and keep the source repositories untouched.",
+      "expected_output": "After read-only inspection and confirmation of repository purposes, an independent effort repository with Chinese context documents is created without a worktree or commit; source repositories remain unchanged.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Set up a feature workspace for payment-flow across frontend, api, and infrastructure. I have not decided which repositories, paths, or parent directory are needed yet.",
+      "expected_output": "The assistant asks only for the missing intake details and does not create files, worktrees, or implementation branches prematurely.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Create an effort named payment-flow for /workspace/frontend and /workspace/api under /workspace/efforts. Implementation details have not been decided yet.",
+      "expected_output": "The skill creates only the effort framework and records the inspected source repositories; it does not create feature branches or implementation worktrees.",
+      "files": []
+    }
+  ]
+}

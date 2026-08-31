@@ -1,0 +1,41 @@
+{
+  "description": "Track consecutive identical tool failures (PostToolUseFailure) and block further attempts after 3 (PreToolUse). Allowlists transient errors (429, ETIMEDOUT, DNS).",
+  "hooks": {
+    "PostToolUseFailure": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/run-hook-post.js\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/run-hook-post.js\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/run-hook-pre.js\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

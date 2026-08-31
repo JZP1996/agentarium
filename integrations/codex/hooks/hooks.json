@@ -1,0 +1,45 @@
+{
+  "description": "Agentarium Codex lifecycle hooks.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "^Bash$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/hooks/run-hook.js\" sleep-cap",
+            "commandWindows": "node \"${PLUGIN_ROOT}\\hooks\\run-hook.js\" sleep-cap",
+            "timeout": 2,
+            "statusMessage": "Checking sleep duration"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "^Bash$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/hooks/run-hook.js\" bash-error-diagnostics",
+            "commandWindows": "node \"${PLUGIN_ROOT}\\hooks\\run-hook.js\" bash-error-diagnostics",
+            "timeout": 2,
+            "statusMessage": "Reviewing Bash result"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/hooks/run-hook.js\" time-awareness",
+            "commandWindows": "node \"${PLUGIN_ROOT}\\hooks\\run-hook.js\" time-awareness",
+            "timeout": 2
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "skills": [
+    {
+      "name": "code-review",
+      "repository": "https://github.com/anthropics/claude-plugins-official.git",
+      "revision": "b5eddebc6444d73108941ee698f25fa8759b8710",
+      "sourcePath": "plugins/code-review",
+      "destination": "skills/code-review",
+      "license": "Apache-2.0",
+      "refresh": "manual",
+      "reason": "The vendored skill is adapted for tool-neutral use."
+    },
+    {
+      "name": "code-simplifier",
+      "repository": "https://github.com/anthropics/claude-plugins-official.git",
+      "revision": "b5eddebc6444d73108941ee698f25fa8759b8710",
+      "sourcePath": "plugins/code-simplifier",
+      "destination": "skills/code-simplifier",
+      "license": "Apache-2.0",
+      "refresh": "manual",
+      "reason": "The vendored skill is adapted for tool-neutral use."
+    },
+    {
+      "name": "karpathy-guidelines",
+      "repository": "https://github.com/multica-ai/andrej-karpathy-skills.git",
+      "revision": "2c606141936f1eeef17fa3043a72095b4765b9c2",
+      "sourcePath": "CLAUDE.md",
+      "destination": "skills/karpathy-guidelines",
+      "license": "MIT",
+      "refresh": "manual",
+      "reason": "The vendored skill is converted from the upstream CLAUDE.md."
+    },
+    {
+      "name": "skill-creator",
+      "repository": "https://github.com/anthropics/skills.git",
+      "revision": "9d2f1ae187231d8199c64b5b762e1bdf2244733d",
+      "sourcePath": "skills/skill-creator",
+      "destination": "skills/skill-creator",
+      "license": "Apache-2.0",
+      "refresh": "manual",
+      "reason": "The vendored directory has local formatting and file-mode differences."
+    },
+    {
+      "name": "find-skills",
+      "repository": "https://github.com/vercel-labs/skills.git",
+      "revision": "e173b8c88f2581cfdaa1b6767c6519a08155790e",
+      "sourcePath": "skills/find-skills",
+      "destination": "skills/find-skills",
+      "license": "MIT",
+      "refresh": "manual",
+      "reason": "The vendored file has local formatting differences; the updated revision provides explicit MIT license evidence."
+    },
+    {
+      "name": "tdd",
+      "repository": "https://github.com/mattpocock/skills.git",
+      "revision": "9603c1cc8118d08bc1b3bf34cf714f62178dea3b",
+      "sourcePath": "skills/engineering/tdd",
+      "destination": "skills/tdd",
+      "license": "MIT",
+      "refresh": "manual",
+      "reason": "The vendored skill has local formatting differences."
+    },
+    {
+      "name": "dotnet-best-practices",
+      "repository": "https://github.com/github/awesome-copilot.git",
+      "revision": "fb80ec4f215e8a96dfdc80f674cabcda36ccd01a",
+      "sourcePath": "skills/dotnet-best-practices",
+      "destination": "skills/dotnet-best-practices",
+      "license": "MIT",
+      "refresh": "manual",
+      "reason": "The vendored skill has local formatting differences."
+    },
+    {
+      "name": "multi-stage-dockerfile",
+      "repository": "https://github.com/github/awesome-copilot.git",
+      "revision": "fb80ec4f215e8a96dfdc80f674cabcda36ccd01a",
+      "sourcePath": "skills/multi-stage-dockerfile",
+      "destination": "skills/multi-stage-dockerfile",
+      "license": "MIT",
+      "refresh": "manual",
+      "reason": "The vendored skill has local frontmatter formatting differences."
+    }
+  ]
+}
