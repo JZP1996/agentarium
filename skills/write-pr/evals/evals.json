@@ -1,0 +1,41 @@
+{
+  "skill_name": "write-pr",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Draft this Azure DevOps PR description targeting release/2.x; origin/main also exists.",
+      "expected_output": "Use the explicit release target and repository template, not the first main branch found, and publish nothing.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Write a PR description for the current branch. Its intended target is unknown.",
+      "expected_output": "Establish the target or ask before comparing; do not infer it from main/master existence or the tracking branch.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Draft a description from this supplied uncommitted patch.",
+      "expected_output": "Use the requested proposed scope and identify it accurately, instead of refusing solely because there are no new commits.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "The repository provides a PR template with validation and compatibility sections. Draft the PR.",
+      "expected_output": "Preserve required sections and report actual checks; do not invent passing results or force a fixed number of changes.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Prepare PR text for changes in two separate repositories.",
+      "expected_output": "Produce distinct drafts for confirmed targets unless a combined proposal was explicitly requested.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "I am thinking about opening a PR later; explain this function now.",
+      "expected_output": "Do not trigger PR drafting simply because a future PR was mentioned.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "defaults": {
+    "scope": "user",
+    "installation": "copy",
+    "updates": "latest-on-request"
+  },
+  "skills": [
+    {
+      "name": "karpathy-guidelines",
+      "source": "multica-ai/andrej-karpathy-skills",
+      "reason": "Shared coding discipline: explicit assumptions, focused changes, and verifiable outcomes."
+    },
+    {
+      "name": "find-skills",
+      "source": "vercel-labs/skills",
+      "reason": "Discover upstream Skills when explicitly seeking additional agent capabilities."
+    },
+    {
+      "name": "dotnet-best-practices",
+      "source": "github/awesome-copilot",
+      "reason": "Apply .NET and C# guidance when working in that stack."
+    },
+    {
+      "name": "web-design-guidelines",
+      "source": "vercel-labs/agent-skills",
+      "reason": "Review Web UI accessibility, interaction, and interface quality against current guidelines."
+    },
+    {
+      "name": "frontend-design",
+      "source": "anthropics/skills",
+      "reason": "Develop intentional visual direction, typography, layout, and interface design for Web UI work."
+    },
+    {
+      "name": "vercel-react-best-practices",
+      "source": "vercel-labs/agent-skills",
+      "reason": "Apply React and Next.js performance guidance when working in that stack."
+    },
+    {
+      "name": "grilling",
+      "source": "mattpocock/skills",
+      "reason": "Clarify and stress-test plans through rounds of questions and recommendations while leaving decisions to the user."
+    }
+  ]
+}

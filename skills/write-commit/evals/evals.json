@@ -1,0 +1,41 @@
+{
+  "skill_name": "write-commit",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write a commit message. The staged diff fixes parsing; unstaged changes add an unrelated feature.",
+      "expected_output": "Draft a message for the staged parsing fix only and leave the index and working directory unchanged.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Draft a Conventional Commit for this breaking API removal with the required migration.",
+      "expected_output": "Represent the actual breaking change with the appropriate marker and explanatory footer instead of forcing a one-line message.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Write a commit message, but no files are staged and two unrelated tasks are modified.",
+      "expected_output": "Ask which change scope to describe rather than combining tasks or staging files.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Write a commit message for adding Azure AD authentication.",
+      "expected_output": "Preserve proper names and acronyms instead of lowercasing the entire subject.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Write a message for this supplied patch; do not inspect another repository.",
+      "expected_output": "Use the supplied patch as the scope without inventing tests or running Git mutations.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Write a commit message; there are no changes or supplied change description.",
+      "expected_output": "Explain the missing input instead of manufacturing a commit message or creating a commit.",
+      "files": []
+    }
+  ]
+}

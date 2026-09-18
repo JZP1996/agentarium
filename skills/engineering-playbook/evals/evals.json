@@ -1,0 +1,107 @@
+{
+  "skill_name": "engineering-playbook",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Which tools does mise manage in this environment?",
+      "expected_output": "Inspect actual mise selections, distinguish observed legacy Python installations from the current policy, and use mise only for non-Python tooling without uninstalling anything.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Install a new CLI tool, but it is unclear which mise backend supports it.",
+      "expected_output": "Prefer investigating mise support and present the uncertain installation options to the user; do not silently switch to another manager or install globally.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "The pnpm command exists on PATH but fails through a mise shim.",
+      "expected_output": "Check installation and selection before proposing a fix; do not automatically reinstall or change global defaults.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "This Python project uses uv, while my shell has Python from mise.",
+      "expected_output": "Run Python through uv with a uv-managed interpreter, do not use mise Python or automatically uninstall it, and ask before rebuilding an incompatible existing environment.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "This project already declares its tool versions through another manager.",
+      "expected_output": "Respect project requirements and do not migrate non-Python tools without a request; if a Python setup conflicts with uv execution, ask instead of silently bypassing the policy.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "I want mise to manage Cargo.",
+      "expected_output": "Treat Cargo as part of the Rust toolchain; check the existing setup and ask about any unclear installation or selection scope.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "uv is unavailable and mise Python works. Run a one-off Python helper.",
+      "expected_output": "Explain that uv-managed execution is required and ask how to make uv available; do not execute the helper with mise or bare Python and do not install tools without authorization.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "Inspect this Python diff for formatting problems without changing files.",
+      "expected_output": "Use the project formatter in check mode or Ruff non-mutating checks if unspecified, and do not execute autofix.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "This project uses Poetry and Black. Add a small feature.",
+      "expected_output": "Preserve Poetry dependency declarations and Black formatting conventions; determine whether uv-managed execution can use the setup safely and ask if not, without silently migrating it or using mise Python.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "Create a new Python project with uv; my shell Python is managed by mise.",
+      "expected_output": "Choose a compatible uv-managed interpreter, respect download authorization, and neither use mise Python nor change its global defaults.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "Write a Python script that only uses the standard library.",
+      "expected_output": "Run the standard-library-only script with uv run --managed-python --no-project, without adding dependencies or using bare Python or mise.",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "The current module has an established layout. Fix one bug.",
+      "expected_output": "Apply relevant conventions without reordering the module or renaming symbols solely to enforce personal style.",
+      "files": []
+    },
+    {
+      "id": 13,
+      "prompt": "A uv run command needs to verify tests without changing dependency resolution.",
+      "expected_output": "Respect the existing lockfile and use supported locked execution after checking prerequisites; do not silently regenerate the lockfile.",
+      "files": []
+    },
+    {
+      "id": 14,
+      "prompt": "Only engineering-playbook is installed. The project uses uv, but its test command reports the wrong Python version.",
+      "expected_output": "Inspect project requirements, the active environment, the executable path and actual version using the bundled Python reference; do not redirect to another Skill or change global defaults without approval.",
+      "files": []
+    },
+    {
+      "prompt": "Fix a JavaScript function; all development tools already work.",
+      "expected_output": "Read the engineering-playbook entry when required, follow project conventions, and do not load Python or environment references without a relevant need.",
+      "files": [],
+      "id": 15
+    },
+    {
+      "prompt": "While reviewing a TypeScript change, write a one-off Python helper to inspect a fixture.",
+      "expected_output": "Load the bundled Python reference before executing the helper even though the main project is not Python; follow its execution policy without installing another Skill.",
+      "files": [],
+      "id": 16
+    },
+    {
+      "prompt": "Only engineering-playbook is installed. Set up the Python environment for this project.",
+      "expected_output": "Use the two bundled references as needed and do not require the former standalone environment-playbook or python-playbook Skills.",
+      "files": [],
+      "id": 17
+    }
+  ]
+}

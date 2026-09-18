@@ -1,0 +1,41 @@
+{
+  "skill_name": "review-feedback",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Address the review feedback on this Azure DevOps pull request. The comments and diff are attached.",
+      "expected_output": "Assess comments against the supplied code, apply appropriate local fixes, and draft outcomes without requiring a provider-specific CLI or publishing replies.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Draft replies to these review comments, but do not change code or post anything.",
+      "expected_output": "Return accurate drafts and leave both source and remote state unchanged.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Resolve the review thread for the fix that is currently only in my working tree.",
+      "expected_output": "Explain that the fix is not in the reviewed revision and leave the remote thread open; do not push implicitly.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Reply to the reviewer and resolve this addressed thread. The reviewed revision includes the verified fix.",
+      "expected_output": "Verify the target and current thread state, then use the configured integration for the requested reply and resolution without duplicate actions.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "The reviewer asks for a change that would break compatibility. Address the feedback.",
+      "expected_output": "Explain the compatibility evidence, draft a response or ask a targeted question, and do not blindly implement or resolve disputed feedback.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Clean up the comments inside this source file.",
+      "expected_output": "Do not activate review-feedback processing or interact with remote review threads.",
+      "files": []
+    }
+  ]
+}

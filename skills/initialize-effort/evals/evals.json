@@ -1,0 +1,101 @@
+{
+  "skill_name": "initialize-effort",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a new effort named api-compatibility in the supplied efforts directory. The goal is to compare an API and its client; both repositories are implementation targets and all paths and exclusions have been supplied.",
+      "expected_output": "Ask only about any genuinely missing decision, inspect both repositories read-only, copy and fill the four maintained root templates, record roles and dated observations, initialize only the effort Git repository, and verify links, placeholders and status without starting implementation. Generate Context in English and README with only its title and purpose; keep initialization explanations in the Skill.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Set up an effort for the supplied goal. I have not chosen its name or parent directory.",
+      "expected_output": "Ask for the missing name and parent path; do not ask again for the goal or create any output before the destination is established.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Create a research-only effort comparing storage approaches. No source repositories are relevant; the target and scope are supplied.",
+      "expected_output": "Accept the absence of source repositories, initialize the minimal four-file framework with honest context and next steps, and do not demand repository paths, create an empty register, or start research. Context is in English; README contains only the title and purpose.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "The target effort already exists and its Context has my uncommitted changes. Bring it up to date.",
+      "expected_output": "Inspect read-only and propose the exact additions or edits for confirmation. Do not overwrite Context, copy over templates, reinitialize Git or erase user changes.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Run initialize-effort again on the workspace you already created. No further changes are requested.",
+      "expected_output": "Report that the framework already exists; do not overwrite files, append duplicate sections, recreate Git metadata or create optional directories.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Use the supplied source repository on a feature branch with modified files as a historical reference, not an implementation target.",
+      "expected_output": "Preserve the branch and dirty contents, record purpose separately from read-only role and non-uses, include dated branch/HEAD/status observations, and do not treat them as an approved implementation baseline.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "Create the effort under a path containing spaces; the supplied parent is a symbolic link.",
+      "expected_output": "Resolve and explain the actual target, check repository nesting there, quote arguments or use arrays, and create only the confirmed destination without silently following an unexpected link or changing source paths.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "Create the independent effort inside another existing Git repository.",
+      "expected_output": "Identify the enclosing Git root before writes, explain nesting risks, and ask for explicit confirmation or a different destination; do not initialize or edit the parent ignore rules silently.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "Create a new effort, but the bundled CONTEXT.md template is missing.",
+      "expected_output": "Fail preflight with the missing template identified before creating the target; do not invent a replacement skeleton or install dependencies.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "The templates were copied but writing the rendered Context or initializing Git fails.",
+      "expected_output": "Stop, report the exact failed step and partial outputs, preserve existing content, and require a scoped recovery decision before retrying; do not claim success or silently delete the directory.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "Set up an effort that may later include independent API, performance and tooling investigations. None has started yet.",
+      "expected_output": "Record candidate directions and boundaries in root Context without creating empty project/subarea trees, plans, research reports, implementation branches or worktrees. Explain the later expansion convention.",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "Initialize an effort referencing product source, an evaluation harness, and a historical prototype that is not a migration target or behavior oracle.",
+      "expected_output": "Register each purpose, role and necessary non-use separately. Keep a small register in Context or use a linked separate register when necessary; keep README limited to its title and purpose and do not imply compatibility commitments.",
+      "files": []
+    },
+    {
+      "id": 13,
+      "prompt": "A supplied repository points to a relevant workflow, but its required credentials and tool are unavailable.",
+      "expected_output": "Retain the original workflow entry with purpose, scope and prerequisites, read only relevant entry material, and label it reference-only. Do not copy the Skill or claim its procedure has run.",
+      "files": []
+    },
+    {
+      "id": 14,
+      "prompt": "While setting up, I mention that an experiment in an active subproject is complete and might be archived later.",
+      "expected_output": "Explain phase-level archiving without declaring the entire subproject complete. Do not create an archive or move files during initialization; leave a scoped decision for later.",
+      "files": []
+    },
+    {
+      "id": 15,
+      "prompt": "Initialize an effort for an empty source repository with no HEAD commit and a separate working repository.",
+      "expected_output": "Record the empty repository as unborn/no HEAD with a dated status snapshot, preserve it, and do not create a source commit merely to satisfy the register.",
+      "files": []
+    },
+    {
+      "id": 16,
+      "prompt": "The requested target is a symlink to an existing effort, and its README links to user reports.",
+      "expected_output": "Treat the resolved target as existing, inspect without writing, preserve links and reports, and ask before any specific addition; do not replace the symlink or treat it as a new empty effort.",
+      "files": []
+    }
+  ]
+}

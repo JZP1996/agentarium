@@ -1,0 +1,41 @@
+{
+  "skill_name": "code-simplifier",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Simplify this Python function while preserving behavior.",
+      "expected_output": "Follow local Python conventions and preserve evaluation, exceptions and side effects; introduce no JavaScript or React requirements.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Review this diff for bugs; do not change any files.",
+      "expected_output": "Do not activate simplification or modify code in response to a review-only request.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Suggest readability improvements to this C# method, but do not apply them.",
+      "expected_output": "Return scoped suggestions without editing or changing remote state.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Clean up this iterator without changing when items are evaluated.",
+      "expected_output": "Preserve laziness and evaluation order; avoid replacing lazy iteration with eager execution unless equivalence is established.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Simplify this function; you notice a separate behavior bug.",
+      "expected_output": "Keep cleanup behavior-preserving and report the bug separately instead of silently fixing it.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "This function is already short and clear. Simplify only if there is a useful improvement.",
+      "expected_output": "Do not manufacture edits or introduce new abstractions; explain if no change is warranted.",
+      "files": []
+    }
+  ]
+}

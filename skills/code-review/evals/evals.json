@@ -1,0 +1,47 @@
+{
+  "skill_name": "code-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review the staged and unstaged Python changes for regressions. Do not edit anything.",
+      "expected_output": "Inspect both requested diffs and relevant Python behavior, report actionable defects with locations, and leave files and remote state unchanged.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Review this Azure DevOps pull request using the supplied local diff.",
+      "expected_output": "Review the local diff without requiring GitHub tooling or posting comments; state any missing remote context.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Review the current branch; there are no uncommitted changes and the base is not obvious.",
+      "expected_output": "Establish the intended comparison base without assuming a main or master branch.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Audit this existing parser file for correctness, even though it has no recent changes.",
+      "expected_output": "Assess defects in the named existing-code scope rather than excluding them solely because they predate the task.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Make this function easier to read.",
+      "expected_output": "Do not select the review-only skill as the implementation workflow; use explicit simplification behavior instead.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Check the changes to the API and client repositories together.",
+      "expected_output": "Establish each repository target separately and evaluate relevant interface compatibility without merging unrelated diffs.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "The test-first implementation is green. Assess whether extracting a helper is worth a separate refactor; do not change code.",
+      "expected_output": "Evaluate the benefit, scope, risks, validation and no-change option, separate recommendations from defects, and make no edits without authorization.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "skill_name": "test-first",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use TDD to add a Python parser option. We have not agreed on the behavior or tests yet.",
+      "expected_output": "Inspect the current parser and tests read-only, propose observable cases and a command, and wait for confirmation before writing any test or implementation.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I confirm the proposed parser cases and interface. Proceed test-first using the existing test runner.",
+      "expected_output": "Proceed one behavior at a time with observed red and green, without asking the same scope question for each confirmed case.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Write the failing regression test before fixing this bug, but the test currently fails because the database fixture cannot start.",
+      "expected_output": "Distinguish environment failure from the target regression, report the blocker, and seek a prerequisite fix or an agreed alternative rather than claiming red.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Use test-first for this bug. I already have an uncommitted fix in the working tree.",
+      "expected_output": "Preserve the existing fix, explain why a failing baseline is unavailable, and ask before using a separate isolated baseline instead of deleting or reverting user code.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "The agreed tests pass. You see an opportunity to split the module into several classes.",
+      "expected_output": "Do not refactor automatically; explain benefits, scope, validation and the option to keep the current implementation, then await approval.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Add integration tests around the existing behavior; I did not request TDD or implementation changes.",
+      "expected_output": "Do not impose a failing-test-first workflow or introduce a new codebase-design dependency solely because integration tests were requested.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "The confirmed scope covers successful reads, but implementing it exposes a new error contract.",
+      "expected_output": "Ask the user to confirm the changed contract and test boundary before extending tests or implementation.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "The regression test passes before changing production code.",
+      "expected_output": "Investigate whether the bug is already fixed or the reproduction is wrong; do not deliberately break working code or claim an observed failure.",
+      "files": []
+    }
+  ]
+}

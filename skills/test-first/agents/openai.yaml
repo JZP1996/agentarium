@@ -1,0 +1,3 @@
+interface:
+  display_name: "Test First"
+  short_description: "Confirm test scope, then verify a red-green cycle"
